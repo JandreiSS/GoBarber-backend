@@ -8,7 +8,7 @@ public async up(queryRunner: QueryRunner): Promise<void> {
       columns: [
         {
           name: 'id',
-          type: 'varchar',
+          type: 'uuid',
           isPrimary: true,
           generationStrategy: 'uuid',
           default: 'uuid_generate_v4()',
