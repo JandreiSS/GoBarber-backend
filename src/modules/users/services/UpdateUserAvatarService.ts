@@ -2,10 +2,10 @@ import { getRepository } from 'typeorm';
 import path from 'path';
 import fs from 'fs';
 
-import AppError from '../errors/AppError';
+import AppError from '@shared/errors/AppError';
 
-import uploadConfig from '../config/upload';
-import User from '../models/User';
+import uploadConfig from '@config/upload';
+import User from '@modules/users/infra/typeorm/entities/User';
 
 interface Request {
   user_id: string;
@@ -24,7 +24,7 @@ class UpdateUserAvatarService {
 
     if (user.avatar) {
       // Deletar avatar anterior
-      
+
       const userAvatarFilePath = path.join(uploadConfig.directory, user.avatar);
       const userAvatarFileExists = await fs.promises.stat(userAvatarFilePath);
 
